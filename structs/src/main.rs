@@ -31,6 +31,13 @@ fn main() {
 
 fn print_variable(var : Variable) {
     println!("{:?}", var);
+
+    let v = vec![1, 2, 3];
+    let u = vec!['a'; 4];
+
+    println!("{:?}", v);
+    println!("{:?}", u);
+
 }
 
 fn build_variable(name : String, value : i32, address : u32) -> Variable {
