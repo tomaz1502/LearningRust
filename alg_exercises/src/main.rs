@@ -18,4 +18,7 @@ fn main() {
 
     let v = ordered_count::ordered_count("tomaz");
     println!("{:?}", v);
+
+
+    guessing::guessing();
 }
