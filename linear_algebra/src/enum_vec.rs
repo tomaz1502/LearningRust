@@ -1,15 +1,10 @@
-use std::ops::{Add, Mul};
-
-pub enum Vect<T> {
-    TwoDim(T, T),
-    ThreeDim(T, T, T),
+pub enum Vect {
+    TwoDim(i32, i32),
+    ThreeDim(i32, i32, i32),
 }
 
-impl<T> Vect<T>
-where
-    T: Field,
-{
-    pub fn dot(u: Vect<T>, v: Vect<T>) -> Option<T> {
+impl Vect {
+    pub fn dot(u: &Vect, v: &Vect) -> Option<i32> {
         match (u, v) {
             (Vect::TwoDim(x1, y1), Vect::TwoDim(x2, y2)) => Some(x1 * x2 + y1 * y2),
             (Vect::ThreeDim(x1, y1, z1), Vect::ThreeDim(x2, y2, z2)) => {
@@ -19,7 +14,7 @@ where
         }
     }
 
-    pub fn cross(u: Vect<T>, v: Vect<T>) -> Option<Vect<T>> {
+    pub fn cross(u: &Vect, v: &Vect) -> Option<Vect> {
         match (u, v) {
             (Vect::TwoDim(_, _), _) => None,
             (_, Vect::TwoDim(_, _)) => None,
@@ -34,7 +29,7 @@ where
     pub fn scale(&mut self, r: i32) {
         match self {
             Vect::TwoDim(x, y) => {
-                *x = *x * r;
+                *x *= r;
                 *y *= r
             }
             Vect::ThreeDim(x, y, z) => {
